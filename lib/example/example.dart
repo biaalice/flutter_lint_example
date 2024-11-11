@@ -1,32 +1,15 @@
-import 'dart:async';
 import 'dart:developer';
 
-class User {
-  final String name;
-  final int age;
+void main() {
+  List<int> numbers = List<int>.generate(1000000, (int index) => index);
 
-  User({required this.name, required this.age});
-
-  void display() {
-    log('Name: $name, Age: $age');
+  int result = -1;
+  for (int i = 0; i < numbers.length; i++) {
+    if (numbers[i] == 500000) {
+      result = numbers[i];
+      break;
+    }
   }
-}
 
-Future<User> fetchUserData() async {
-  try {
-    await Future<Duration>.delayed(const Duration(seconds: 2));
-    return User(name: 'John Doe', age: 30);
-  } catch (e) {
-    log('Error fetching user data: $e');
-    rethrow;
-  }
-}
-
-Future<void> main() async {
-  try {
-    User user = await fetchUserData();
-    user.display();
-  } catch (e) {
-    log('Erro ao processar o usuário: $e');
-  }
+  log(result.toString());
 }
