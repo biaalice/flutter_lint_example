@@ -1,59 +1,59 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp()); // Violação: falta de `const` para construtor constante.
+  runApp(MyApp()); // Violation: missing `const` for constant constructor.
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key); // Violação: não usa `const`.
+  MyApp({Key? key}) : super(key: key); // Violation: does not use `const`.
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Lint Example", // Violação: usa aspas duplas em vez de aspas simples.
+      title: "Flutter Lint Example", // Violation: uses double quotes instead of single quotes.
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(), // Violação: falta de `const` para construtor constante.
+      home: HomePage(), // Violation: missing `const` for constant constructor.
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  // Violação: variável não-final, mas o valor não é modificado.
-  String message = "Hello, World!"; // Violação: aspas duplas.
+  // Violation: non-final variable, but the value is not modified.
+  String message = "Hello, World!"; // Violation: double quotes.
 
-  // Violação: sem especificar o tipo da variável.
+  // Violation: missing type annotation for the variable.
   var counter = 0;
 
   HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Violação: `print` usado em vez de um logger.
+    // Violation: `print` used instead of a logger.
     print(message);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"), // Violação: aspas duplas.
+        title: Text("Home"), // Violation: double quotes.
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(message),
-            // Violação: `Container` vazio, deve ser `SizedBox`.
+            // Violation: empty `Container`, should be `SizedBox`.
             Container(),
             ElevatedButton(
               onPressed: () {
-                // Violação: bloco else vazio.
+                // Violation: empty else block.
                 if (counter < 5) {
                   counter++;
                 } else {
-                  // Não faz nada.
+                  // Does nothing.
                 }
               },
-              child: Text("Increase"), // Violação: aspas duplas.
+              child: Text("Increase"), // Violation: double quotes.
             ),
           ],
         ),
