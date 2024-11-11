@@ -1,4 +1,4 @@
-name: Check for Comments
+name: Check Comments
 
 on:
   pull_request:
@@ -16,11 +16,11 @@ jobs:
 
       - name: Check for comments in the code
         run: |
-          if grep -r -I "//" lib/**/*.dart; then
+          if grep -r -I -E "^\s*//" lib/**/*.dart; then
             echo "Comments found in the code. Please remove them before submitting the PR."
             exit 1
           fi
-          if grep -r -I "/*" lib/**/*.dart; then
+          if grep -r -I -E "^\s*/\*" lib/**/*.dart; then
             echo "Comments found in the code. Please remove them before submitting the PR."
             exit 1
           fi

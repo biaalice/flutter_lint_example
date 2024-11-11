@@ -1,4 +1,4 @@
-name: Flutter Lint Check
+name: Check Flutter Lint
 
 on:
   pull_request:
